@@ -1,38 +1,176 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap');
+
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+  margin: 0;
+  background-image: linear-gradient(315deg, #D9AFD9, #97D9E1);
+  /*background-color: #FFF8E7;*/
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  font-family: 'Kalam', cursive;
+  color: #222222;
+}
+
+footer {
+  margin: 15px 10px;
+  padding: 25px 25px;
+}
+
+hr {
+  border: 1.5px solid;
+  border-radius: 10px;
+}
+
+.heading {
+  width: 50%;
+  margin: auto;
+  text-align: center;
+  justify-content: center;
+}
+
+.login-wrapper {
+  width: 70%;
+  height: auto;
+  padding: 20px 20px;
+  margin: 5% auto 20% auto;
+  justify-content: center;
+  background: whitesmoke;
+  border: 2px solid #222222;
+  border-radius: 4px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  color: #222222;
+}
+
+.login {
+  margin: 28% auto 50% auto;
+}
+
+.main-section {
+  width: 50%;
+  margin: auto;
+  justify-content: center;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+monthly-main {
+  margin-top: 10px;
+  width: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.expense {
+  background-image: linear-gradient(62deg, #FBAB7E, #F7CE68);
+  margin: 15px 10px;
+  padding: 25px 25px;
+  border-radius: 1em 5em 1em 5em / 2em 1em 2em 1em;
+  -moz-border-radius: 1em 5em 1em 5em / 2em 1em 2em 1em;
+  -webkit-border-radius: 1em 5em 1em 5em / 2em 1em 2em 1em;
+  border: 2px solid #1b1327;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.expense h2 {
+  color: #d14f4f;
+}
+
+.transactions {
+  width: 50%;
+  background-image: linear-gradient(62deg, #FBAB7E, #F7CE68);
+  margin: 15px 10px;
+  padding: 20px 20px;
+  border-radius: 1em 5em 1em 5em / 2em 1em 2em 1em;
+  -moz-border-radius: 1em 5em 1em 5em / 2em 1em 2em 1em;
+  -webkit-border-radius: 1em 5em 1em 5em / 2em 1em 2em 1em;
+  border: 2px solid #1b1327;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.income {
+  background-image: linear-gradient(62deg, #FBAB7E, #F7CE68);
+  margin: 15px 10px;
+  padding: 30px 30px;
+  border-radius: 1em 5em 1em 5em / 2em 1em 2em 1em;
+  -moz-border-radius: 1em 5em 1em 5em / 2em 1em 2em 1em;
+  -webkit-border-radius: 1em 5em 1em 5em / 2em 1em 2em 1em;
+  border: 2px solid #1b1327;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.saving {
+  width: 50%;
+  background-image: linear-gradient(62deg, #FBAB7E, #F7CE68);
+  margin: 15px 10px;
+  padding: 20px 20px;
+  border-radius: 1em 5em 1em 5em / 2em 1em 2em 1em;
+  -moz-border-radius: 1em 5em 1em 5em / 2em 1em 2em 1em;
+  -webkit-border-radius: 1em 5em 1em 5em / 2em 1em 2em 1em;
+  border: 2px solid #1b1327;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.saving h2 {
+  color: #16A085;
+}
+
+.expense-list {
+  width: 60%;
+  background-image: linear-gradient(45deg, #2BD2FF, #2BFF88);
+  margin: 15px 10px;
+  padding: 10px 10px;
+  border-radius: 5px;
+  border: 2px solid #1b1327;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+}
+
+.expense-list h2 {
+  color: #d14f4f;
+}
+
+.total {
+  font-size: larger;
+  font-weight: 700;
+  border-top: 1px solid #1b1327;
+  border-bottom: 0px;
+
+}
+
+.success {
+  font-weight: 700;
+  color: #16a044;
+  transition: 0.5s ease-in-out all;
+  transition-duration: 1s;
+}
+
+@media(max-width: 990px) {
+  body {
+    font-size: small;
   }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  .total {
+    font-size: medium;
   }
-  to {
-    transform: rotate(360deg);
+
+  .main-section {
+    width: 100%;
+  }
+
+  .expense-list {
+    width: 80%;
+  }
+
+  .heading {
+    width: 90%;
+  }
+
+  .login-wrapper {
+    width: 90%;
+  }
+
+  .login {
+    margin-top: 50%;
+    margin-bottom: 75%;
   }
 }
