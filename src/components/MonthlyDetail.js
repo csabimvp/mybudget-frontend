@@ -22,7 +22,7 @@ export default function MonthlyDetail({ token = {} }) {
     function handleCategoryFilter(category_id) {
         const newCat = categories.map(category => {
             if (category.id === category_id) {
-                category_id === 0 ? setCatfilter('?&category=') : setCatfilter(`?&category=${category_id}`)
+                category_id === 0 ? setCatfilter('') : setCatfilter(category_id)
                 return {
                     id: category.id,
                     name: category.name,
@@ -51,7 +51,7 @@ export default function MonthlyDetail({ token = {} }) {
             return setTitleFilter('')
         } else {
             const formattedQuery = query.charAt(0).toUpperCase() + query.slice(1)
-            catFilter.length === 12 ? setTitleFilter(`&title=${formattedQuery}`) : setTitleFilter(`?&title=${formattedQuery}`)
+            setTitleFilter(formattedQuery)
             return setTitleFilter
         }
     }
@@ -86,7 +86,7 @@ export default function MonthlyDetail({ token = {} }) {
 
     useEffect(() => {
         setisLoading(true)
-        axios.get('https://www.csabakeller.com/api/mybudget/payments' + catFilter + titleFilter, {
+        axios.get(`https://www.csabakeller.com/api/mybudget/payments?&category={catFilter}&title={titleFilter}`, {
             headers: {
                 "Content-type": "application/json",
                 "Authorization": "Token " + authkey
