@@ -86,7 +86,7 @@ export default function MonthlyDetail({ token = {} }) {
 
     useEffect(() => {
         setisLoading(true)
-        axios.get(`https://www.csabakeller.com/api/mybudget/payments?&category={catFilter}&title={titleFilter}`, {
+        axios.get(`https://www.csabakeller.com/api/mybudget/payments?&category=${catFilter}&title=${titleFilter}`, {
             headers: {
                 "Content-type": "application/json",
                 "Authorization": "Token " + authkey
@@ -104,7 +104,7 @@ export default function MonthlyDetail({ token = {} }) {
     }, [setPayments, catFilter, titleFilter, authkey])
 
     const filteredPayments = payments.filter(payment => {
-        if (catFilter.length === 0 || catFilter === '?&category=') {
+        if (catFilter.length === 0) {
             return payment.category_name !== 'Income'
         } else {
             return payment
