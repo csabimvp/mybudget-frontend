@@ -144,6 +144,11 @@ monthly-main {
   transition-duration: 1s;
 }
 
+.month-filter li {
+  background-color: transparent;
+  border: none;
+}
+
 @media(max-width: 990px) {
   body {
     font-size: small;

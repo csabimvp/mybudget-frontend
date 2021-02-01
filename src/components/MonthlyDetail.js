@@ -8,13 +8,32 @@ import axios from 'axios';
 import NavList from './Layout/NavList';
 import ExpenseTable from './Layout/ExpenseTable';
 import SearchTitle from './Forms/SearchTitle';
+import MonthsFilter from './Layout/MonthsFilter';
 
 
 export default function MonthlyDetail({ token = {} }) {
     const authkey = token['key']
+    const months = [
+        { id: 0, name: 'All Months', active: true },
+        { id: 1, name: 'January', active: false },
+        { id: 2, name: 'February', active: false },
+        { id: 3, name: 'March', active: false },
+        { id: 4, name: 'April', active: false },
+        { id: 5, name: 'May', active: false },
+        { id: 6, name: 'June', active: false },
+        { id: 7, name: 'July', active: false },
+        { id: 8, name: 'August', active: false },
+        { id: 9, name: 'September', active: false },
+        { id: 10, name: 'October', active: false },
+        { id: 11, name: 'November', active: false },
+        { id: 12, name: 'December', active: false },
+    ]
+    const today = new Date().getMonth() + 1
     const [categories, setCategories] = useState([])
+    const [month, setMonth] = useState(months)
     const [payments, setPayments] = useState([])
     const [catFilter, setCatfilter] = useState('')
+    const [monthFilter, setMonthfilter] = useState('')
     const [titleFilter, setTitleFilter] = useState('')
     const [isLoading, setisLoading] = useState(false)
     const [isError, setisError] = useState(false)
@@ -37,6 +56,26 @@ export default function MonthlyDetail({ token = {} }) {
             }
         })
         setCategories(newCat)
+    };
+
+    function handleMonthFilter(month_id) {
+        const newMonth = months.map(month => {
+            if (month.id === month_id) {
+                month_id === 0 ? setMonthfilter('') : setMonthfilter(month_id)
+                return {
+                    id: month.id,
+                    name: month.name,
+                    active: true,
+                }
+            } else {
+                return {
+                    id: month.id,
+                    name: month.name,
+                    active: false
+                }
+            }
+        })
+        setMonth(newMonth)
     };
 
     function handleSumValues(items = {}) {
@@ -86,7 +125,7 @@ export default function MonthlyDetail({ token = {} }) {
 
     useEffect(() => {
         setisLoading(true)
-        axios.get(`https://www.csabakeller.com/api/mybudget/payments?&category=${catFilter}&title=${titleFilter}`, {
+        axios.get(`https://www.csabakeller.com/api/mybudget/payments?&date_month=${monthFilter}&category=${catFilter}&title=${titleFilter}`, {
             headers: {
                 "Content-type": "application/json",
                 "Authorization": "Token " + authkey
@@ -101,7 +140,7 @@ export default function MonthlyDetail({ token = {} }) {
                 setisError(true)
                 setisLoading(false)
             })
-    }, [setPayments, catFilter, titleFilter, authkey])
+    }, [setPayments, catFilter, titleFilter, monthFilter, authkey])
 
     const filteredPayments = payments.filter(payment => {
         if (catFilter.length === 0) {
@@ -110,6 +149,8 @@ export default function MonthlyDetail({ token = {} }) {
             return payment
         }
     })
+
+    const filteredMonths = month.filter(m => m.id <= today)
 
     return (
         <div className='monthly-main container-fluid'>
@@ -129,7 +170,7 @@ export default function MonthlyDetail({ token = {} }) {
                     }
                 </div>
                 <nav className='col-lg-2 d-md-block sidebar'>
-                    <ul className="nav nav-pills flex-column mb-2">
+                    <ul className="nav nav-pills flex-column">
                         {
                             categories.map(cat => <NavList key={cat.id} {...cat} onFilter={handleCategoryFilter} />)
                         }
@@ -162,7 +203,12 @@ export default function MonthlyDetail({ token = {} }) {
                 </div>
                 <div className='col-lg-2 justify-content-center'>
                     <SearchTitle onSearch={handleSearch} />
-                    <p>Month filter</p>
+                    <hr className='mt-4'></hr>
+                    <ul className="month-filter list-group flex-column text-center mt-2">
+                        {
+                            filteredMonths.map(m => <MonthsFilter key={m.id} {...m} onFilter={handleMonthFilter} />)
+                        }
+                    </ul>
                 </div>
             </div>
         </div>

@@ -80,7 +80,7 @@ export default function AddExpense({ token = {} }) {
                         <input className='form-control' type='text' id='form-title' placeholder="Title" onChange={e => setTitle(e.target.value)} />
                     </div>
                     <div className='input-group mb-3'>
-                        <span class="input-group-text">£</span>
+                        <span className="input-group-text">£</span>
                         <input className='form-control' id='floatingInput' type="text" placeholder="Value" onChange={e => setValue(e.target.value)} />
                     </div>
                     <div className="mb-3">
