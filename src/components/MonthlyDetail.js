@@ -15,8 +15,9 @@ export default function MonthlyDetail({ token = {} }) {
 
     // Setting constants
     const authkey = token['key']
+    const today = new Date().getMonth() + 1
     const months = [
-        { id: 0, name: 'All Months', active: true },
+        { id: 0, name: 'All months', active: true },
         { id: 1, name: 'January', active: false },
         { id: 2, name: 'February', active: false },
         { id: 3, name: 'March', active: false },
@@ -32,12 +33,11 @@ export default function MonthlyDetail({ token = {} }) {
     ]
 
     // Setting React State variables
-    const today = new Date().getMonth() + 1
     const [categories, setCategories] = useState([])
     const [month, setMonth] = useState(months)
     const [payments, setPayments] = useState([])
     const [newCategoryFilter, setNewCategoryFilter] = useState({ id: '', name: 'All categories' })
-    const [monthFilter, setMonthfilter] = useState({ id: '', name: 'Year-to-Date' })
+    const [monthFilter, setMonthfilter] = useState({ id: '', name: 'All months' })
     const [titleFilter, setTitleFilter] = useState('')
     const [isLoading, setisLoading] = useState(false)
     const [isError, setisError] = useState(false)
@@ -170,7 +170,7 @@ export default function MonthlyDetail({ token = {} }) {
     return (
         <div className='monthly-main container-fluid'>
             <div className='row text-center justify-content center'>
-                <h4>Detailed Expense View</h4>
+                <h4>Detailed Expense Table</h4>
             </div>
             <div className='filters row mt-4'>
                 <div className='filter-col col-auto'>
@@ -197,7 +197,7 @@ export default function MonthlyDetail({ token = {} }) {
                         </ul>
                     </div>
                 </div>
-                <div className='filter-col col-auto'>
+                <div className='filter-col col-auto' id='SearchBar'>
                     <SearchTitle onSearch={handleSearch} />
                 </div>
                 <div className='filter-col col-auto'>

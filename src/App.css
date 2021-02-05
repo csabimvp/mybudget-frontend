@@ -7,7 +7,6 @@ body {
   height: 100%;
   margin: 0;
   background-image: linear-gradient(300deg, #52ACFF, #80D0C7);
-  /*background-color: #FFF8E7;*/
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -23,6 +22,15 @@ footer {
 hr {
   border: 1.5px solid;
   border-radius: 10px;
+}
+
+.nav {
+  font-size: large;
+  justify-content: center;
+}
+
+.nav-link {
+  color: #3244a0;
 }
 
 .heading {
@@ -141,6 +149,10 @@ monthly-main {
   text-align: center;
 }
 
+.total-card h3 {
+  color: #d14f4f;
+}
+
 .success {
   font-weight: 700;
   color: #16a044;
@@ -149,7 +161,7 @@ monthly-main {
 }
 
 .filters {
-  width: 65%;
+  width: 50%;
   margin: auto;
   padding: 10px 10px;
   justify-content: center;
@@ -181,9 +193,26 @@ monthly-main {
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
 }
 
+/* For big screens */
+@media(min-width: 1500px) {
+  .filters {
+    width: 65%;
+  }
+}
+
+/* For small screens */
 @media(max-width: 990px) {
   body {
     font-size: small;
+  }
+
+  .nav {
+    font-size: medium;
+  }
+
+  .nav-link {
+    margin: 7px;
+    padding: 0px;
   }
 
   .total {
@@ -215,6 +244,11 @@ monthly-main {
     width: 100%;
     padding: 10px 10px;
     justify-content: space-around;
+  }
+
+  #SearchBar {
+    justify-content: flex;
+    padding: 5px 0px;
   }
 
   .filters button {
