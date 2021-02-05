@@ -5,13 +5,15 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 // Importing Components
-import NavList from './Layout/NavList';
+import CategoryFilter from './Layout/CategoryFilter'
 import ExpenseTable from './Layout/ExpenseTable';
 import SearchTitle from './Forms/SearchTitle';
 import MonthsFilter from './Layout/MonthsFilter';
 
 
 export default function MonthlyDetail({ token = {} }) {
+
+    // Setting constants
     const authkey = token['key']
     const months = [
         { id: 0, name: 'All Months', active: true },
@@ -28,20 +30,24 @@ export default function MonthlyDetail({ token = {} }) {
         { id: 11, name: 'November', active: false },
         { id: 12, name: 'December', active: false },
     ]
+
+    // Setting React State variables
     const today = new Date().getMonth() + 1
     const [categories, setCategories] = useState([])
     const [month, setMonth] = useState(months)
     const [payments, setPayments] = useState([])
-    const [catFilter, setCatfilter] = useState('')
-    const [monthFilter, setMonthfilter] = useState('')
+    const [newCategoryFilter, setNewCategoryFilter] = useState({ id: '', name: 'All categories' })
+    const [monthFilter, setMonthfilter] = useState({ id: '', name: 'Year-to-Date' })
     const [titleFilter, setTitleFilter] = useState('')
     const [isLoading, setisLoading] = useState(false)
     const [isError, setisError] = useState(false)
 
-    function handleCategoryFilter(category_id) {
+
+    function handleCategoryFilter(e, category_id, category_name) {
+        e.preventDefault();
         const newCat = categories.map(category => {
             if (category.id === category_id) {
-                category_id === 0 ? setCatfilter('') : setCatfilter(category_id)
+                category_id === 0 ? setNewCategoryFilter({ id: '', name: 'All categories' }) : setNewCategoryFilter({ id: category_id, name: category_name })
                 return {
                     id: category.id,
                     name: category.name,
@@ -58,10 +64,11 @@ export default function MonthlyDetail({ token = {} }) {
         setCategories(newCat)
     };
 
-    function handleMonthFilter(month_id) {
+    function handleMonthFilter(e, month_id, month_name) {
+        e.preventDefault();
         const newMonth = months.map(month => {
             if (month.id === month_id) {
-                month_id === 0 ? setMonthfilter('') : setMonthfilter(month_id)
+                month_id === 0 ? setMonthfilter({ id: '', name: 'Year-to-Date' }) : setMonthfilter({ id: month_id, name: month_name })
                 return {
                     id: month.id,
                     name: month.name,
@@ -77,6 +84,14 @@ export default function MonthlyDetail({ token = {} }) {
         })
         setMonth(newMonth)
     };
+
+    function resetFilters(e) {
+        e.preventDefault();
+
+        setNewCategoryFilter({ id: '', name: 'All categories' })
+        setMonthfilter({ id: '', name: 'Year-to-Date' })
+        setTitleFilter('')
+    }
 
     function handleSumValues(items = {}) {
         //const sum_total = items.reduce((total, obj) => total = parseInt(obj.value, 10) + total, 0)
@@ -125,7 +140,7 @@ export default function MonthlyDetail({ token = {} }) {
 
     useEffect(() => {
         setisLoading(true)
-        axios.get(`https://www.csabakeller.com/api/mybudget/payments?&date_month=${monthFilter}&category=${catFilter}&title=${titleFilter}`, {
+        axios.get(`https://www.csabakeller.com/api/mybudget/payments?&date_month=${monthFilter.id}&category=${newCategoryFilter.id}&title=${titleFilter}`, {
             headers: {
                 "Content-type": "application/json",
                 "Authorization": "Token " + authkey
@@ -140,10 +155,10 @@ export default function MonthlyDetail({ token = {} }) {
                 setisError(true)
                 setisLoading(false)
             })
-    }, [setPayments, catFilter, titleFilter, monthFilter, authkey])
+    }, [setPayments, newCategoryFilter, titleFilter, monthFilter, authkey])
 
     const filteredPayments = payments.filter(payment => {
-        if (catFilter.length === 0) {
+        if (newCategoryFilter.id.length === 0) {
             return payment.category_name !== 'Income'
         } else {
             return payment
@@ -157,6 +172,52 @@ export default function MonthlyDetail({ token = {} }) {
             <div className='row text-center justify-content center'>
                 <h4>Detailed Expense View</h4>
             </div>
+            <div className='filters row mt-4'>
+                <div className='filter-col col-auto'>
+                    <div className='dropdown'>
+                        <button className='btn btn-primary btn-lg dropdown-toggle' type='button' data-bs-toggle='dropdown' aria-expanded='false'>
+                            {newCategoryFilter.name}
+                        </button>
+                        <ul className="dropdown-menu">
+                            {
+                                categories.map(cat => <CategoryFilter key={cat.id} {...cat} onFilter={handleCategoryFilter} />)
+                            }
+                        </ul>
+                    </div>
+                </div>
+                <div className='filter-col col-auto'>
+                    <div className='dropdown'>
+                        <button className='btn btn-primary btn-lg dropdown-toggle' type='button' data-bs-toggle='dropdown' aria-expanded='false'>
+                            {monthFilter.name}
+                        </button>
+                        <ul className="dropdown-menu">
+                            {
+                                filteredMonths.map(m => <MonthsFilter key={m.id} {...m} onFilter={handleMonthFilter} />)
+                            }
+                        </ul>
+                    </div>
+                </div>
+                <div className='filter-col col-auto'>
+                    <SearchTitle onSearch={handleSearch} />
+                </div>
+                <div className='filter-col col-auto'>
+                    <button className='btn btn-outline-danger btn-lg' onClick={(e) => resetFilters(e)}>
+                        Reset all filters
+                    </button>
+                </div>
+            </div>
+            <div className='row mt-4 total-card-wrapper'>
+                <div className='total-card col'>
+                    <h4>Transactions:</h4>
+                    <hr className='mt-2'></hr>
+                    <h3><strong>{filteredPayments.length}</strong></h3>
+                </div>
+                <div className='total-card col'>
+                    <h4>Value:</h4>
+                    <hr className='mt-2'></hr>
+                    <h3><strong>£ {handleSumValues(filteredPayments)}</strong></h3>
+                </div>
+            </div>
             <div className='row mt-4'>
                 <div className="loading-wrapper text-center">
                     {isError && <h2>Something went wrong =( </h2>}
@@ -169,21 +230,14 @@ export default function MonthlyDetail({ token = {} }) {
                         </>
                     }
                 </div>
-                <nav className='col-lg-2 d-md-block sidebar'>
-                    <ul className="nav nav-pills flex-column">
-                        {
-                            categories.map(cat => <NavList key={cat.id} {...cat} onFilter={handleCategoryFilter} />)
-                        }
-                    </ul>
-                </nav>
-                <div className="col-lg-8">
+                <div className="col text-center">
                     <table className='table'>
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
+                                <th className='table-hidden-onsmall' scope="col">#</th>
                                 <th scope="col">Title</th>
                                 <th scope="col">Category</th>
-                                <th scope="col">Description</th>
+                                <th className='table-hidden-onsmall' scope="col">Description</th>
                                 <th scope="col">Date</th>
                                 <th scope="col">Value</th>
                             </tr>
@@ -200,15 +254,6 @@ export default function MonthlyDetail({ token = {} }) {
                             </tr>
                         </tfoot>
                     </table>
-                </div>
-                <div className='col-lg-2 justify-content-center'>
-                    <SearchTitle onSearch={handleSearch} />
-                    <hr className='mt-4'></hr>
-                    <ul className="month-filter list-group flex-column text-center mt-2">
-                        {
-                            filteredMonths.map(m => <MonthsFilter key={m.id} {...m} onFilter={handleMonthFilter} />)
-                        }
-                    </ul>
                 </div>
             </div>
         </div>

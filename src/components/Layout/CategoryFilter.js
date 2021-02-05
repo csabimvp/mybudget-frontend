@@ -1,4 +1,4 @@
-export default function MonthsFilter({ id, active, name, onFilter = f => f }) {
+export default function CategoryFilter({ id, active, name, onFilter = f => f }) {
     return (
         <>
             <li>

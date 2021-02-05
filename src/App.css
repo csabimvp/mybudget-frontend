@@ -6,7 +6,7 @@ html {
 body {
   height: 100%;
   margin: 0;
-  background-image: linear-gradient(315deg, #D9AFD9, #97D9E1);
+  background-image: linear-gradient(300deg, #52ACFF, #80D0C7);
   /*background-color: #FFF8E7;*/
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -131,10 +131,14 @@ monthly-main {
 
 .total {
   font-size: larger;
+  text-align: left;
   font-weight: 700;
   border-top: 1px solid #1b1327;
   border-bottom: 0px;
+}
 
+.total-value {
+  text-align: center;
 }
 
 .success {
@@ -144,9 +148,37 @@ monthly-main {
   transition-duration: 1s;
 }
 
-.month-filter li {
-  background-color: transparent;
-  border: none;
+.filters {
+  width: 65%;
+  margin: auto;
+  padding: 10px 10px;
+  justify-content: center;
+  background-color: rgb(220,220,220, 0.75);
+  border: 1px solid #222222;
+  border-radius: 25px;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+}
+
+#filterbutton {
+  background-color: #4158D0;
+  color: #FFF8E7;
+}
+
+.total-card-wrapper{
+  width: 45%;
+  margin: auto;
+  padding: 10px 10px;
+  justify-content: space-around;
+}
+
+.total-card {
+  text-align: center;
+  margin: 10px 10px;
+  padding: 20px 20px;
+  background-color: rgb(220,220,220, 0.75);
+  border: 1px solid #222222;
+  border-radius: 20px;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
 }
 
 @media(max-width: 990px) {
@@ -177,5 +209,45 @@ monthly-main {
   .login {
     margin-top: 50%;
     margin-bottom: 75%;
+  }
+
+  .filters {
+    width: 100%;
+    padding: 10px 10px;
+    justify-content: space-around;
+  }
+
+  .filters button {
+    font-size: 14px;
+  }
+
+  .filter-col {
+    margin-top: 10px;
+  }
+
+  .total-card-wrapper{
+    width: 100%;
+    justify-content: space-around;
+  }
+  
+  .total-card {
+    text-align: center;
+    padding: 10px 10px;
+  }
+
+  .total-card h3 {
+    font-size: medium;
+  }
+
+  .table {
+    width: 100%;
+  }
+
+  .total {
+    display: none;
+  }
+
+  .table-hidden-onsmall {
+    display: none;
   }
 }

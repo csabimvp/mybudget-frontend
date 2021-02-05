@@ -3,10 +3,10 @@ export default function ExpenseTable({ payment = {}, rownum }) {
 
     return (
         <tr>
-            <th scope='row'>{rownum + 1}</th>
+            <th className='table-hidden-onsmall' scope='row'>{rownum + 1}</th>
             <td>{title}</td>
             <td>{category_name}</td>
-            <td>{description}</td>
+            <td className='table-hidden-onsmall'>{description}</td>
             <td>{created}</td>
             <td>£ {value}</td>
         </tr>
