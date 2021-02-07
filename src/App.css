@@ -33,6 +33,19 @@ hr {
   color: #3244a0;
 }
 
+.active {
+  color: #0b224d;
+  text-decoration: underline;
+  font-weight: 700;
+}
+
+.nav-link:hover,
+.active:hover {
+  color: #0b224d;
+  text-decoration: underline;
+  font-weight: 700;
+}
+
 .heading {
   width: 50%;
   margin: auto;
@@ -124,11 +137,11 @@ monthly-main {
 }
 
 .saving h2 {
-  color: #16A085;
+  color: #23a51f;
 }
 
 .dashboard-saving-value {
-  color: #16A085;
+  color: #23a51f;
 }
 
 .expense-list {
@@ -279,7 +292,7 @@ monthly-main {
 
   #SearchBar {
     justify-content: flex;
-    padding: 5px 0px;
+    padding: 0px 0px;
   }
 
   .filters button {

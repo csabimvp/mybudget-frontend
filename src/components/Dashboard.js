@@ -29,7 +29,7 @@ export default function Dashboard({ token = {} }) {
             }
         })
             .then((response) => {
-                const allPayments = response.data;
+                const allPayments = response.data.reverse();
                 setisLoading(false)
                 setDashboardData(allPayments)
             })
@@ -38,8 +38,6 @@ export default function Dashboard({ token = {} }) {
                 setisLoading(false)
             })
     }, [setDashboardData, authkey, username])
-
-    console.log(username)
 
     return (
         <div className='dashboard-main container'>

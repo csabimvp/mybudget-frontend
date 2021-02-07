@@ -72,7 +72,7 @@ export default function AddExpense({ token = {} }) {
             <div className='login-wrapper'>
                 <form onSubmit={((e) => handleSubmit(e))}>
                     <div className='mb-3 mt-2'>
-                        <select className="form-select" id='form-category' ariaLabel="Default select example" onChange={e => setCategory(e.target.value)}>
+                        <select className="form-select" id='form-category' onChange={e => setCategory(e.target.value)}>
                             {
                                 categoryList.map(category => <option key={category.id} value={category.id} label={category.name}></option>)
                             }

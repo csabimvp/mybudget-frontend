@@ -6,7 +6,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  NavLink
 } from "react-router-dom";
 
 // Import components
@@ -47,16 +47,16 @@ function App() {
 
         <ul className='nav mb-4'>
           <li className='nav-item'>
-            <Link className='nav-link' to="/">Home</Link>
+            <NavLink className='nav-link' activeClassName="nav-link active" exact to="/">Home</NavLink>
           </li>
           <li className='nav-item'>
-            <Link className='nav-link' to="/dashboard">Dashboard</Link>
+            <NavLink className='nav-link' activeClassName="nav-link active" to="/dashboard">Dashboard</NavLink>
           </li>
           <li className='nav-item'>
-            <Link className='nav-link' to="/table">Expense Table</Link>
+            <NavLink className='nav-link' activeClassName="nav-link active" to="/table">Expense Table</NavLink>
           </li>
           <li className='nav-item'>
-            <Link className='nav-link' to="/add-expense">Add Expense</Link>
+            <NavLink className='nav-link' activeClassName="nav-link active" to="/add-expense">Add Expense</NavLink>
           </li>
         </ul>
 
