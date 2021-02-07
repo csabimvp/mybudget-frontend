@@ -7,6 +7,7 @@ import axios from 'axios';
 
 export default function AddExpense({ token = {} }) {
     const authkey = token['key']
+    const user = token['user']
     const today = new Date().toISOString()
     const [title, setTitle] = useState()
     const [description, setDescription] = useState()
@@ -17,6 +18,7 @@ export default function AddExpense({ token = {} }) {
     const [successForm, setSuccessForm] = useState(false)
 
     const newExpense = {
+        user: user,
         title: title,
         description: description,
         value: value,

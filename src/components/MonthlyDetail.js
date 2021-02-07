@@ -15,6 +15,8 @@ export default function MonthlyDetail({ token = {} }) {
 
     // Setting constants
     const authkey = token['key']
+    //const username = token['user_username']
+    const user = token['user']
     const today = new Date().getMonth() + 1
     const months = [
         { id: 0, name: 'All months', active: true },
@@ -140,7 +142,7 @@ export default function MonthlyDetail({ token = {} }) {
 
     useEffect(() => {
         setisLoading(true)
-        axios.get(`https://www.csabakeller.com/api/mybudget/payments?&date_month=${monthFilter.id}&category=${newCategoryFilter.id}&title=${titleFilter}`, {
+        axios.get(`https://www.csabakeller.com/api/mybudget/payments?user=${user}&date_month=${monthFilter.id}&category=${newCategoryFilter.id}&title=${titleFilter}`, {
             headers: {
                 "Content-type": "application/json",
                 "Authorization": "Token " + authkey
@@ -155,7 +157,7 @@ export default function MonthlyDetail({ token = {} }) {
                 setisError(true)
                 setisLoading(false)
             })
-    }, [setPayments, newCategoryFilter, titleFilter, monthFilter, authkey])
+    }, [setPayments, newCategoryFilter, titleFilter, monthFilter, authkey, user])
 
     const filteredPayments = payments.filter(payment => {
         if (newCategoryFilter.id.length === 0) {

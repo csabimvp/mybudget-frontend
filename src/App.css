@@ -84,6 +84,10 @@ monthly-main {
   color: #d14f4f;
 }
 
+.dashboard-expense-value {
+  color: #d14f4f;
+}
+
 .transactions {
   width: 50%;
   background-image: linear-gradient(62deg, #FBAB7E, #F7CE68);
@@ -120,6 +124,10 @@ monthly-main {
 }
 
 .saving h2 {
+  color: #16A085;
+}
+
+.dashboard-saving-value {
   color: #16A085;
 }
 
@@ -193,10 +201,33 @@ monthly-main {
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
 }
 
+.months-wrapper {
+  width: 50%;
+  margin: auto;
+}
+
+.dashboard-month-wrapper {
+  background-image: linear-gradient(62deg, #FBAB7E, #F7CE68);
+  margin: 10px 20px;
+  padding: 15px 15px;
+  border-radius: 1em 5em 1em 5em / 2em 1em 2em 1em;
+  -moz-border-radius: 1em 5em 1em 5em / 2em 1em 2em 1em;
+  -webkit-border-radius: 1em 5em 1em 5em / 2em 1em 2em 1em;
+  border: 2px solid #1b1327;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+.dashboard-month-wrapper h2 {
+  text-align: center;
+  color: #2e3038;
+}
+
 /* For big screens */
 @media(min-width: 1500px) {
   .filters {
-    width: 65%;
+    width: 50%;
+    justify-content: space-evenly;
   }
 }
 
@@ -283,5 +314,9 @@ monthly-main {
 
   .table-hidden-onsmall {
     display: none;
+  }
+
+  .months-wrapper {
+    width: 100%;
   }
 }

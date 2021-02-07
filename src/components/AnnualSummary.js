@@ -12,6 +12,7 @@ import ExpenseList from './Layout/ExpenseList';
 
 export default function AnnualSummary({ token = {} }) {
     const authkey = token['key']
+    const username = token['user_username']
     const [expenses, dispatchExpenses] = useReducer(
         ExpenseReducer,
         {
@@ -32,13 +33,13 @@ export default function AnnualSummary({ token = {} }) {
     useEffect(() => {
         dispatchExpenses({ type: 'FETCH' })
         axios.all([
-            axios.get('https://www.csabakeller.com/api/mybudget/annual-summary/', {
+            axios.get(`https://www.csabakeller.com/api/mybudget/annual-summary/?username=${username}`, {
                 headers: {
                     "Content-type": "application/json",
                     "Authorization": "Token " + authkey
                 }
             }),
-            axios.get('https://www.csabakeller.com/api/mybudget/category-summary/', {
+            axios.get(`https://www.csabakeller.com/api/mybudget/category-summary/?username=${username}`, {
                 headers: {
                     "Content-type": "application/json",
                     "Authorization": "Token " + authkey
@@ -56,7 +57,7 @@ export default function AnnualSummary({ token = {} }) {
             .catch((error) => {
                 dispatchExpenses({ type: 'FETCH_FAILURE' })
             })
-    }, [authkey, dispatchExpenses])
+    }, [authkey, username, dispatchExpenses])
 
 
     return (
