@@ -51,7 +51,7 @@ export default function AddExpense({ token = {} }) {
     }
 
     useEffect(() => {
-        axios.get('https://www.csabakeller.com/api/mybudget/categories', {
+        axios.get(`https://www.csabakeller.com/api/mybudget/categories?user=${user}`, {
             headers: {
                 "Content-type": "application/json",
                 "Authorization": "Token " + authkey
@@ -64,7 +64,7 @@ export default function AddExpense({ token = {} }) {
             .catch((error) => {
                 console.log(error)
             })
-    }, [authkey])
+    }, [authkey, user])
 
     return (
         <div className='main-section'>

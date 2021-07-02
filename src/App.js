@@ -15,6 +15,7 @@ import AddExpense from './components/Forms/AddExpense'
 import AnnualSummary from './components/AnnualSummary'
 import MonthlyDetail from './components/MonthlyDetail'
 import Dashboard from './components/Dashboard'
+import Categories from './components/Categories'
 import Footer from './components/Layout/Footer'
 
 // Import CSS
@@ -56,6 +57,9 @@ function App() {
             <NavLink className='nav-link' activeClassName="nav-link active" to="/table">Expense Table</NavLink>
           </li>
           <li className='nav-item'>
+            <NavLink className='nav-link' activeClassName="nav-link active" to="/categories">Categories</NavLink>
+          </li>
+          <li className='nav-item'>
             <NavLink className='nav-link' activeClassName="nav-link active" to="/add-expense">Add Expense</NavLink>
           </li>
         </ul>
@@ -71,6 +75,9 @@ function App() {
           </Route>
           <Route path="/table">
             <MonthlyDetail token={token} />
+          </Route>
+          <Route path="/categories">
+            <Categories token={token} />
           </Route>
           <Route path="/add-expense">
             <AddExpense token={token} />

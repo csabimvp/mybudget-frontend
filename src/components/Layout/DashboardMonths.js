@@ -3,7 +3,7 @@ export default function DashboardMonths({ data = {} }) {
 
     return (
 
-        <div className='dashboard-month-wrapper col'>
+        <div className='dashboard-month-wrapper col-6'>
             <h2><strong>{month}</strong></h2>
             <h3>Transactions: <strong>{total_transactions}</strong></h3>
             <hr className='mt-2' />

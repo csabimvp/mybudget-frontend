@@ -113,7 +113,7 @@ export default function MonthlyDetail({ token = {} }) {
     }
 
     useEffect(() => {
-        axios.get('https://www.csabakeller.com/api/mybudget/categories', {
+        axios.get(`https://www.csabakeller.com/api/mybudget/categories?user=${user}`, {
             headers: {
                 "Content-type": "application/json",
                 "Authorization": "Token " + authkey
@@ -138,7 +138,7 @@ export default function MonthlyDetail({ token = {} }) {
             .catch((error) => {
                 setisError(true)
             })
-    }, [authkey])
+    }, [authkey, user])
 
     useEffect(() => {
         setisLoading(true)
