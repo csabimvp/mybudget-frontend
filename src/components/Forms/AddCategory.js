@@ -9,18 +9,17 @@ export default function AddCategory({token = {}}) {
     const user = token['user']
     // const username = token['user_username']
 
-    const [isExpanded, setExpanded] = useState(false)
-
     const [name, setName] = useState('')
+    const slug = user+"_"+name
+
+    const [isExpanded, setExpanded] = useState(false)
     const [ispending, setIsPending] = useState(false)
     const [successForm, setSuccessForm] = useState(false)
 
-    console.log(authkey)
-    console.log(user)
-
     const newCategory = {
-        user: user,
+        user_id: user,
         name: name,
+        slug: slug
     }
 
     function handleToggle(e) {
