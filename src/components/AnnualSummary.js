@@ -106,7 +106,7 @@ export default function AnnualSummary({ token = {} }) {
                     <div className='saving'>
                         <h1>Total Savings:</h1>
                         <hr className='mt-2'></hr>
-                        <h2><strong>£ {expenses.total['saving']}</strong><span style={{ color: '#222222' }}> - ({expenses.total['saving_percent']*100} %)</span></h2>
+                        <h2><strong>£ {expenses.total['saving']}</strong><span style={{ color: '#222222' }}> - ({Math.round(expenses.total['saving_percent']*100)} %)</span></h2>
                     </div>
                 </div>
 
