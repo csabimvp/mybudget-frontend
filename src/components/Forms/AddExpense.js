@@ -12,42 +12,74 @@ export default function AddExpense({ token = {} }) {
     const [title, setTitle] = useState()
     const [description, setDescription] = useState()
     const [value, setValue] = useState()
-    const [category, setCategory] = useState('')
+    const [recurring, setRecurring] = useState(false)
     const [categoryList, setCategoryList] = useState([])
+    const [category, setCategory] = useState()
     const [ispending, setIsPending] = useState(false)
     const [successForm, setSuccessForm] = useState(false)
-
-    const newExpense = {
-        user: user,
-        title: title,
-        description: description,
-        value: value,
-        category: parseInt(category),
-        created: today,
-    }
 
     function handleSubmit(e) {
         e.preventDefault();
 
         setIsPending(true)
 
-        axios.post('https://www.csabakeller.com/api/mybudget/payments', newExpense, {
-            headers: {
-                "Content-type": "application/json",
-                "Authorization": "Token " + authkey
+        if (recurring === false) {
+            const newExpense = {
+                user: user,
+                title: title,
+                description: description,
+                value: value,
+                category: parseInt(category),
+                created: today,
             }
-        })
-            .then(result => {
-                console.log(result)
-                setIsPending(false)
-                setSuccessForm(true)
-                setTimeout(() => {
-                    setSuccessForm(false)
-                }, 2500)
+
+            axios.post('https://www.csabakeller.com/api/mybudget/payments', newExpense, {
+                headers: {
+                    "Content-type": "application/json",
+                    "Authorization": "Token " + authkey
+                }
             })
-            .catch((error) => {
-                console.log(error.response.data)
+                .then(result => {
+                    console.log(result)
+                    setIsPending(false)
+                    setSuccessForm(true)
+                    setTimeout(() => {
+                        setSuccessForm(false)
+                    }, 2500)
+                })
+                .catch((error) => {
+                    console.log(error.response.data)
+                })
+
+        } else {
+
+            const newExpense = {
+                user: user,
+                title: title,
+                description: description,
+                value: value,
+                category: parseInt(category),
+            }
+
+            axios.post('https://www.csabakeller.com/api/mybudget/recurring_payments', newExpense, {
+                headers: {
+                    "Content-type": "application/json",
+                    "Authorization": "Token " + authkey
+                }
             })
+                .then(result => {
+                    console.log(result)
+                    setIsPending(false)
+                    setSuccessForm(true)
+                    setTimeout(() => {
+                        setSuccessForm(false)
+                    }, 2500)
+                })
+                .catch((error) => {
+                    console.log(error.response.data)
+                })
+        }
+
     }
 
     useEffect(() => {
@@ -59,6 +91,7 @@ export default function AddExpense({ token = {} }) {
         })
             .then((response) => {
                 const allCategories = response.data;
+                setCategory(allCategories[0].id)
                 setCategoryList(allCategories);
             })
             .catch((error) => {
@@ -68,9 +101,13 @@ export default function AddExpense({ token = {} }) {
 
     return (
         <div className='main-section'>
-            <h4>Add New Expense</h4>
+            <h4>Add New Payment</h4>
             <div className='login-wrapper'>
                 <form onSubmit={((e) => handleSubmit(e))}>
+                    <div className='recurring-switch form-check form-switch mb-3 mt-2'>
+                        <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault" onChange={e => setRecurring(!recurring)} />
+                        <label className="form-check-label" htmlFor="flexSwitchCheckDefault">- Recurring Payment</label>
+                    </div>
                     <div className='mb-3 mt-2'>
                         <select className="form-select" id='form-category' onChange={e => setCategory(e.target.value)}>
                             {
@@ -90,8 +127,8 @@ export default function AddExpense({ token = {} }) {
                         <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" onChange={e => setDescription(e.target.value)}></textarea>
                     </div>
                     <div>
-                        {!ispending && <button className='btn btn-lg btn-primary mt-4 mb-3' type="submit">Add Expense</button>}
-                        {ispending && <button className='btn btn-lg btn-primary mt-4 mb-3 disabled' type="submit">Adding expense...</button>}
+                        {!ispending && <button className='btn btn-lg btn-primary mt-4 mb-3' type="submit">Add Payment</button>}
+                        {ispending && <button className='btn btn-lg btn-primary mt-4 mb-3 disabled' type="submit">Adding payment...</button>}
                     </div>
                 </form>
                 {/*<Animated animationIn="bounceIn" animationOut="bounceOut" isVisible={true} animationInDuration={1500}>*/}
