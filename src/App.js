@@ -56,7 +56,7 @@ function App() {
       <Router>
 
         <div className='mynavbar row'>
-          <div className='col-sm-8'>
+          <div className='col-auto'>
             <h1 className='fw-bold'>{user_name}'s Budget App</h1>
           </div>
           <div className='col-auto'>
