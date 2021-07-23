@@ -284,6 +284,36 @@ hr {
   justify-content: space-around;
 }
 
+.recurringpayment-wrapper {
+  background-color: #1991c3;
+  color: #FFF8E7;
+  width: 30%;
+  margin: 10px auto 20px auto;
+  padding: 15px 15px;
+  border-radius: 1em 5em 1em 5em / 2em 1em 2em 1em;
+  -moz-border-radius: 1em 5em 1em 5em / 2em 1em 2em 1em;
+  -webkit-border-radius: 1em 5em 1em 5em / 2em 1em 2em 1em;
+  border: 2px solid #1b1327;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.recurringpayment-wrapper-income {
+  background-color: #06bd5b;
+  color: #1a181d;
+  width: 30%;
+  margin: 10px auto 20px auto;
+  padding: 15px 15px;
+  border-radius: 1em 5em 1em 5em / 2em 1em 2em 1em;
+  -moz-border-radius: 1em 5em 1em 5em / 2em 1em 2em 1em;
+  -webkit-border-radius: 1em 5em 1em 5em / 2em 1em 2em 1em;
+  border: 2px solid #1b1327;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.recurringpayment-category {
+  color: #F7CE68;
+}
+
 /* For big screens */
 @media(min-width: 1500px) {
   .filters {
@@ -388,8 +418,32 @@ hr {
     display: none;
   }
 
+  .transactions {
+    width: 85%;
+  }
+
+  .income {
+    width: 100%;
+  }
+
+  .expense {
+    width: 95%;
+  }
+
+  .saving {
+    width: 85%;
+  }
+
   .dashboard-month-wrapper {
     width: 95%;
+  }
+
+  .recurringpayment-wrapper-income {
+    width: 90%;
+  }
+
+  .recurringpayment-wrapper {
+    width: 90%;
   }
 
   .recurring-switch {

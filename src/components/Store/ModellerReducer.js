@@ -12,7 +12,8 @@ export default function ModellerReducer(state, action) {
                 ...state,
                 isLoading: false,
                 isError: false,
-                data: action.payload,
+                modeller: action.payload[0],
+                recurring_payments: action.payload[1],
             }
         }
         case 'FETCH_FAILURE': {
@@ -20,7 +21,8 @@ export default function ModellerReducer(state, action) {
                 ...state,
                 isLoading: false,
                 isError: true,
-                data: [],
+                modeller: [],
+                recurring_payments: [],
             }
         }
         default: {
