@@ -118,8 +118,12 @@ export default function Modeller({ token = {} }) {
                         <h2 className='fw-bold mt-5'>List of active Recurring Payments</h2>
                         <p className='lead'>Value - high to low</p>
                         <hr className='mb-4' />
-                        {modellData.recurring_payments.length > 0 &&
+                        {modellData.recurring_payments.length > 0 ? (
                             handleRecurringPaymentFilter(modellData.recurring_payments).map((payment, index) => <RecurringPayments key={payment.id} data={payment} counter={index} />)
+                        ) : (
+                            <h2>You have not created any Recurring Payments yet...</h2>
+                        )
+
                         }
                     </div>
                 </>

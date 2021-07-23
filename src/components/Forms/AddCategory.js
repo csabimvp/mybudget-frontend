@@ -119,7 +119,7 @@ export default function AddCategory({ token = {} }) {
 
                                 <div className='form-floating mb-3'>
                                     <input className='form-control' type='text' id='form-title' placeholder="example.com" onChange={e => setNewCategoryName(e.target.value)} />
-                                    <label htmlFor='form-title'>Title</label>
+                                    <label htmlFor='form-title'>Add New Category</label>
                                 </div>
 
 
