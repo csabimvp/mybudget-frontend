@@ -40,8 +40,6 @@ export default function AddCategory({ token = {} }) {
             name: newCategoryName,
         }
 
-        console.log(newCategory)
-
         axios.post('https://www.csabakeller.com/api/mybudget/categories', newCategory, {
             headers: {
                 "Content-type": "application/json",
@@ -62,6 +60,31 @@ export default function AddCategory({ token = {} }) {
             })
             .catch((error) => {
                 dispatchCategories({ type: 'FETCH_FAILURE' })
+            })
+    }
+
+    function handleEditCategory({ e, category = {}, editedName }) {
+        e.preventDefault();
+
+        const update = {
+            user: user,
+            name: editedName,
+        }
+
+        axios.put(`https://www.csabakeller.com/api/mybudget/categories/${category.id}`, update, {
+            headers: {
+                "Content-type": "application/json",
+                "Authorization": "Token " + authkey
+            }
+        })
+            .then(result => {
+                dispatchCategories({
+                    type: 'EDIT',
+                    payload: result.data
+                })
+            })
+            .catch((error) => {
+                console.log(error.response.data)
             })
     }
 
@@ -140,7 +163,7 @@ export default function AddCategory({ token = {} }) {
                     }
                 </div>
                 {
-                    categories.data.map(category => <Category key={category.id} category={category} />)
+                    categories.data.map(category => <Category key={category.id} category={category} onEdit={handleEditCategory} />)
                 }
             </div>
         </div>

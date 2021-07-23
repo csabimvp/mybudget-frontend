@@ -113,6 +113,7 @@ export default function AnnualSummary({ token = {} }) {
             </>
             <div className='row justify-content-center'>
                 <h2 className='fw-bold mt-5'>Expense summary by category:</h2>
+                <p className='lead'>Value - high to low</p>
                 <hr className='mb-4' />
                 {expenses.category.length > 0 &&
                     handleExpenseFilter(expenses.category).map(expense => <ExpenseList key={expense.id} expense={expense} />)

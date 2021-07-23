@@ -171,7 +171,7 @@ hr {
 
 .expense-list {
   width: 60%;
-  background-image: linear-gradient(45deg, #2BD2FF, #2BFF88);
+  background-image: linear-gradient(90deg, #fdc630ad, #feb47b);
   margin: 15px 10px;
   padding: 10px 10px;
   border-radius: 5px;
@@ -275,7 +275,7 @@ hr {
 
 .category-list {
   width: 75%;
-  background-image: linear-gradient(45deg, #2BD2FF, #2BFF88);
+  background-image: linear-gradient(180deg, #fdc630ad, #feb47b);
   margin: 10px auto 10px auto;
   padding: 10px 10px;
   border-radius: 5px;
@@ -285,8 +285,7 @@ hr {
 }
 
 .recurringpayment-wrapper {
-  background-color: #1991c3;
-  color: #FFF8E7;
+  background-color: #3d73b475;
   width: 30%;
   margin: 10px auto 20px auto;
   padding: 15px 15px;
@@ -298,7 +297,7 @@ hr {
 }
 
 .recurringpayment-wrapper-income {
-  background-color: #06bd5b;
+  background-color: #126188;
   color: #1a181d;
   width: 30%;
   margin: 10px auto 20px auto;
@@ -311,7 +310,11 @@ hr {
 }
 
 .recurringpayment-category {
-  color: #F7CE68;
+  color: #1a181dbd;
+}
+
+.recurringpayment-counter {
+  color: #FFF8E7;
 }
 
 /* For big screens */
@@ -346,6 +349,8 @@ hr {
 
   .mynavbar {
     width: 100%;
+    font-size: small;
+    justify-content: flex-end;
   }
 
   .total {
