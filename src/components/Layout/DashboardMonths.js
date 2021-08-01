@@ -11,7 +11,7 @@ export default function DashboardMonths({ data = {} }) {
             <h3>Expenses: <span className='dashboard-expense-value'><strong>£ {expense}</strong></span></h3>
             <h3>Saving: <span className='dashboard-saving-value'><strong>£ {saving}</strong></span></h3>
             <hr className='mt-2' />
-            <p>Expense: <span className='dashboard-expense-value'><strong>{expense_percent*100}%</strong></span> -·- Saving: <span className='dashboard-saving-value'><strong>{saving_percent*100}%</strong></span></p>
+            <p>Expense: <span className='dashboard-expense-value'><strong>{round(expense_percent * 100, 2)}%</strong></span> -·- Saving: <span className='dashboard-saving-value'><strong>{rond(saving_percent * 100, 2)}%</strong></span></p>
         </div>
 
     )

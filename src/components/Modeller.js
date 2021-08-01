@@ -23,6 +23,27 @@ export default function Modeller({ token = {} }) {
         }
     )
 
+    function handleDelete({ e, payment = {} }) {
+        e.preventDefault();
+        console.log(payment)
+
+        axios.delete(`https://www.csabakeller.com/api/mybudget/recurring_payments/${payment.id}`, {
+            headers: {
+                "Content-type": "application/json",
+                "Authorization": "Token " + authkey
+            }
+        })
+            .then(result => {
+                dispatchModellData({
+                    type: 'DELETE',
+                    payload: payment
+                })
+            })
+            .catch((error) => {
+                console.log(error.response.data)
+            })
+    }
+
     function handleRecurringPaymentFilter(items = {}) {
         const FilteredRecurringPayments = items.sort((a, b) => b.value - a.value)
         return FilteredRecurringPayments
@@ -119,7 +140,7 @@ export default function Modeller({ token = {} }) {
                         <p className='lead'>Value - high to low</p>
                         <hr className='mb-4' />
                         {modellData.recurring_payments.length > 0 ? (
-                            handleRecurringPaymentFilter(modellData.recurring_payments).map((payment, index) => <RecurringPayments key={payment.id} data={payment} counter={index} />)
+                            handleRecurringPaymentFilter(modellData.recurring_payments).map((payment, index) => <RecurringPayments key={payment.id} data={payment} counter={index} onDelete={handleDelete} />)
                         ) : (
                             <h2>You have not created any Recurring Payments yet...</h2>
                         )

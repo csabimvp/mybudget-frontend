@@ -25,6 +25,14 @@ export default function ModellerReducer(state, action) {
                 recurring_payments: [],
             }
         }
+        case 'DELETE': {
+            return {
+                ...state,
+                data: state.recurring_payments.filter(
+                    payment => action.payload.id !== payment.id
+                ),
+            }
+        }
         default: {
             throw new Error(`Unhandled type: ${action.type}`)
         }
