@@ -233,7 +233,7 @@ export default function MonthlyDetail({ token = {} }) {
                     }
                 </div>
                 <div className="col text-center">
-                    <table className='table'>
+                    <table className='budget-table table table-striped table-hover'>
                         <thead>
                             <tr>
                                 <th className='table-hidden-onsmall' scope="col">#</th>

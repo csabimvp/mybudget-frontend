@@ -229,6 +229,25 @@ hr {
   color: #FFF8E7;
 }
 
+.budget-table {
+  border: 3px solid #1b1327;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.total {
+  font-weight: bold;
+  color: whitesmoke;
+  text-transform: uppercase;
+  background-color: #191269;
+}
+
+.budget-table thead {
+  font-weight: bold;
+  color: whitesmoke;
+  text-transform: uppercase;
+  background-color: #191269;
+}
+
 .total-card-wrapper{
   width: 45%;
   margin: auto;
