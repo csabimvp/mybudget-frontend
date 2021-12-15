@@ -7,7 +7,7 @@ export default function ExpenseTable({ payment = {}, rownum }) {
             <td>{title}</td>
             <td>{category_name}</td>
             <td className='table-hidden-onsmall'>{description}</td>
-            <td>{created}</td>
+            <td>{created.substring(0, 10)}</td>
             <td>£ {value}</td>
         </tr>
     )
