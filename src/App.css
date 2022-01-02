@@ -1,0 +1,332 @@
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  background-color: whitesmoke;
+  font-family: 'Itim', cursive;
+  color: #1a181d;
+}
+
+.main {
+  padding: 10px 10px;
+}
+
+/*======================================
+//--//-->   MODALS
+======================================*/
+
+.modal-content {
+  background-color: #FCF6F5FF;
+  color: #1a181d;
+}
+
+.modal-header {
+  font-weight: bold;
+}
+
+.recurring-switch {
+  width: 65%;
+  margin: auto;
+  justify-content: center;
+}
+
+.date-picker {
+  margin-left: 5px;
+  padding-left: 5px;
+}
+
+#modal-add-payment-btn {
+  background-color: #2F3C7E;
+  color: #FFF8E7;
+  width: 150px;
+  margin: 5px auto;
+  padding: 5px 5px;
+  border: 2px solid #161b22;
+  border-radius: 5px;
+}
+
+#modal-cancel-btn {
+  width: 75px;
+  padding: 5px 5px;
+  border: 2px solid #161b22;
+  border-radius: 5px;
+  background-color: #d14f4f;
+  color: whitesmoke;
+}
+
+.success {
+  font-weight: 700;
+  color: #16a044;
+  transition: 0.5s ease-in-out all;
+  transition-duration: 1s;
+}
+
+/*======================================
+//--//-->   DASH NAVBAR
+======================================*/
+
+.mynavbar {
+  width: 100%;
+  margin: 0;
+  background-color: #2F3C7E;
+  color: #FFF8E7;
+}
+
+.mynavbar h1 {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.navbar-toggler {
+  color: whitesmoke;
+}
+
+.nav-menu {
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+}
+
+.nav {
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+}
+
+.nav-link {
+  color: #E2D1F9;
+}
+
+.active {
+  color: #EEA47FFF;
+  text-decoration: underline;
+  font-weight: 700;
+}
+
+.nav-link:hover,
+.active:hover {
+  color: #EEA47FFF;
+  text-decoration: underline;
+  font-weight: 700;
+}
+
+.navbar-collapse ul {
+  text-align: center;
+}
+
+.navbar-collapse li {
+  margin: 0px 5px;
+  padding: 0px 5px;
+}
+
+.navbar-collapse button {
+  width: 200px;
+  margin-top: 0;
+  padding-top: 0;
+  border: 2px solid #161b22;
+  border-radius: 5px;
+}
+
+.dash-filter p {
+  margin: 3px 5px;
+  padding: 3px 5px;
+  text-transform: uppercase;
+}
+
+#dashboard-filter-reset-button {
+  background-color: #d14f4f;
+  color: whitesmoke;
+}
+
+/*======================================
+//--//-->   DASHBOARD
+======================================*/
+
+.add-payment-wrapper {
+  width: 100%;
+  text-align: center;
+  margin: 5px 5px;
+  padding: 5px 5px;
+  /*background-color: #FBEAEB;*/
+}
+
+#dashboard-filter-add-button {
+  background-color: #2F3C7E;
+  color: #FFF8E7;
+  width: 150px;
+  margin: 5px auto;
+  padding: 5px 5px;
+  border: 2px solid #161b22;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+#dashboard-filter-add-button i {
+  margin-right: 8px;
+}
+
+#dashboard-filter-add-category-button {
+  background-color: #EEA47FFF;
+  width: 150px;
+  margin: 5px auto;
+  padding: 5px 5px;
+  border: 2px solid #161b22;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+#dashboard-filter-add-category-button i {
+  margin-right: 8px;
+}
+
+.section-title {
+  margin: 10px 10px;
+  padding: 10px 10px;
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);
+}
+
+.statistics-wrapper {
+  width: 100%;
+  margin: 5px auto;
+  padding: 5px 5px;
+  text-align: center;
+  background-color: #2F3C7E;
+  color: #FFF8E7;
+  border: 2px solid #161b22;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.statistics-title {
+  text-transform: uppercase;
+  color: #EEA47FFF;
+}
+
+.statistics-income,
+.statistics-transactions {
+  color: #FFF8E7;
+  font-weight: bold;
+}
+
+.statistics-saving {
+  color: #06bd5b;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.statistics-expense {
+  color: #d14f4f;
+  font-weight: bold;
+}
+
+.statistics-precent {
+  font-style: italic;
+  font-weight: bold;
+  color: #FFF8E7;
+}
+
+/*======================================
+//--//-->   DASHBOARD CHARTS
+======================================*/
+
+.dashboard-pie-wrapper {
+  justify-content: center;
+  margin: auto;
+  width: 100%;
+  height: 400px;
+  padding: 10px 10px;
+  background-color: #2F3C7E;
+  /*background-image: linear-gradient(200deg, #e0eafc, #cfdef3);*/
+  color: #FFF8E7;
+  border: 2px solid #161b22;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.dashboard-bar-wrapper {
+  justify-content: center;
+  margin: auto;
+  width: 100%;
+  height: 450px;
+  padding: 10px 10px;
+  background-color: #2F3C7E;
+  /*background-color: #FFFFFF;
+  background-image: linear-gradient(200deg, #667db6, #0082c8, #0082c8, #667db6);
+  background-image: linear-gradient(200deg, #e0eafc, #cfdef3);*/
+  border: 2px solid #161b22;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.dashboard-months-wrapper {
+  justify-content: center;
+  margin: auto;
+  width: 60%;
+  height: 700px;
+  padding: 10px 10px;
+  /*background-color: #FFFFFF;
+  background-image: linear-gradient(200deg, #667db6, #0082c8, #0082c8, #667db6);
+  background-image: linear-gradient(to right, #351b7c, #191269);*/
+  background-image: linear-gradient(200deg, #e0eafc, #cfdef3);
+  border: 2px solid #161b22;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+/*======================================
+//--//-->   BUDGET TABLE
+======================================*/
+
+.budget-table {
+  width: 100%;
+  margin: 5px auto;
+  padding: 5px 5px;
+  text-align: center;
+}
+
+.budget-table table {
+  width: 100%;
+  font-size: small;
+  border: 2px solid #161b22;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  background-color: whitesmoke;
+}
+
+.budget-table thead {
+  font-weight: bold;
+  color: #EEA47FFF;
+  text-transform: uppercase;
+  background-color: #2F3C7E;
+}
+
+.total-value {
+  text-align: center;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.total {
+  text-align: start;
+  font-weight: bold;
+  color: #EEA47FFF;
+  text-transform: uppercase;
+  background-color: #2F3C7E;
+}
+
+.chart-hidden-on-small {
+  display: none;
+}
+
+.table-hidden-onsmall {
+  display: none;
+}
