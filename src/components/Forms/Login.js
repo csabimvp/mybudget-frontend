@@ -1,12 +1,11 @@
 // Importing React components
-import React, { useEffect, useState, createRef } from 'react';
+import React, { useState } from 'react';
 
 // Importing 3rd party components
 import axios from 'axios';
-import lottie from 'lottie-web';
 
 // Importing Animation
-import Piggy from '../Assets/PiggyBank.json';
+import PiggyAnimation from '../Assets/PiggyAnimation';
 
 
 async function loginUser(credentials) {
@@ -17,7 +16,6 @@ async function loginUser(credentials) {
 export default function Login({ setToken }) {
     const [username, setUserName] = useState();
     const [password, setPassword] = useState();
-    const PiggyContainer = createRef()
 
     const handleSubmit = async e => {
         e.preventDefault();
@@ -32,13 +30,6 @@ export default function Login({ setToken }) {
             return;
         }
     }
-
-    useEffect(() => {
-        lottie.loadAnimation({
-            container: PiggyContainer.current,
-            animationData: Piggy,
-        })
-    }, [])
 
     return (
         <div className='container justify-content-center login'>
@@ -59,9 +50,7 @@ export default function Login({ setToken }) {
                 </form>
                 <p className="mt-3 mb-3 text-muted">&copy; csabakeller.com - 2022</p>
             </div>
-            <div className="loading-wrapper text-center">
-                <div className='animation animations' ref={PiggyContainer}></div>
-            </div>
+            <PiggyAnimation />
         </div>
     )
 }
