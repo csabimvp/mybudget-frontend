@@ -6,9 +6,9 @@ import axios from 'axios';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-export default function AddPayment() {
-    const authkey = 'cf97004e5a637518296a3c898b2a22f2a538cfa8'
-    const user = 1
+export default function AddPayment({ token = {} }) {
+    const { key, user } = token
+
     const today = new Date().toISOString()
     const [startDate, setStartDate] = useState(new Date());
     const [myDate, setMyDate] = useState('')
@@ -20,6 +20,7 @@ export default function AddPayment() {
     const [category, setCategory] = useState()
     const [ispending, setIsPending] = useState(false)
     const [successForm, setSuccessForm] = useState(false)
+    const [errorForm, setErrorForm] = useState(false)
 
     function handleDateFormat(date) {
         const newDate = date.toISOString()
@@ -46,7 +47,7 @@ export default function AddPayment() {
                 axios.post('https://www.csabakeller.com/api/mybudget/payments', newExpense, {
                     headers: {
                         "Content-type": "application/json",
-                        "Authorization": "Token " + authkey
+                        "Authorization": "Token " + key
                     }
                 })
                     .then(result => {
@@ -60,6 +61,7 @@ export default function AddPayment() {
                     })
                     .catch((error) => {
                         console.log(error.response.data)
+                        setErrorForm(true)
                     })
             } else {
                 const newExpense = {
@@ -74,7 +76,7 @@ export default function AddPayment() {
                 axios.post('https://www.csabakeller.com/api/mybudget/payments', newExpense, {
                     headers: {
                         "Content-type": "application/json",
-                        "Authorization": "Token " + authkey
+                        "Authorization": "Token " + key
                     }
                 })
                     .then(result => {
@@ -87,6 +89,7 @@ export default function AddPayment() {
                     })
                     .catch((error) => {
                         console.log(error.response.data)
+                        setErrorForm(true)
                     })
             }
 
@@ -103,7 +106,7 @@ export default function AddPayment() {
             axios.post('https://www.csabakeller.com/api/mybudget/recurring_payments', newExpense, {
                 headers: {
                     "Content-type": "application/json",
-                    "Authorization": "Token " + authkey
+                    "Authorization": "Token " + key
                 }
             })
                 .then(result => {
@@ -116,6 +119,7 @@ export default function AddPayment() {
                 })
                 .catch((error) => {
                     console.log(error.response.data)
+                    setErrorForm(true)
                 })
         }
 
@@ -125,7 +129,7 @@ export default function AddPayment() {
         axios.get(`https://www.csabakeller.com/api/mybudget/categories?user=${user}`, {
             headers: {
                 "Content-type": "application/json",
-                "Authorization": "Token " + authkey
+                "Authorization": "Token " + key
             }
         })
             .then((response) => {
@@ -134,9 +138,10 @@ export default function AddPayment() {
                 setCategoryList(allCategories);
             })
             .catch((error) => {
-                console.log(error)
+                console.log(error.response.data)
+                setErrorForm(true)
             })
-    }, [authkey, user])
+    }, [key, user])
     return (
         <>
 
@@ -188,8 +193,9 @@ export default function AddPayment() {
                                         {ispending && <button className=' mt-4 mb-3 disabled' type="submit">Adding payment...</button>}
                                     </div>
                                     <button type="button" id='modal-cancel-btn' data-bs-dismiss="modal">Cancel</button>
-                                    <div className='success mt-4 text-center'>
-                                        {successForm && <p className='lead'>Successfully added to database.</p>}
+                                    <div className='mt-4 text-center'>
+                                        {successForm && <p className='success lead'>Successfully added to database.</p>}
+                                        {errorForm && <p className='lead'>Successfully added to database.</p>}
                                     </div>
                                 </div>
                             </form>

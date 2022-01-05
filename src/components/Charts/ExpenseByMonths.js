@@ -13,7 +13,7 @@ export default function ExpenseByMonths({ months = {}, year }) {
                             label: 'Income',
                             data: months.map((m) => m.income),
                             backgroundColor: [
-                                '#243B55',
+                                '#ADD8E6',
                             ],
                             borderColor: [
                                 '#161b22',
@@ -63,7 +63,7 @@ export default function ExpenseByMonths({ months = {}, year }) {
                                     weight: 'bold',
                                     size: '20px',
                                 },
-                                color: '#161b22'
+                                color: '#FFF8E7'
                             },
                             legend: {
                                 display: true,
@@ -72,7 +72,7 @@ export default function ExpenseByMonths({ months = {}, year }) {
                                     bottom: 10,
                                 },
                                 labels: {
-                                    color: '#1e4985',
+                                    color: '#EEA47FFF',
                                     font: {
                                         family: 'Itim',
                                         size: 20,
@@ -81,7 +81,7 @@ export default function ExpenseByMonths({ months = {}, year }) {
                                 }
                             },
                             datalabels: {
-                                color: '#222222',
+                                color: '#EEA47FFF',
                                 anchor: 'end',
                                 align: 'start',
                                 offset: -18,
@@ -90,7 +90,7 @@ export default function ExpenseByMonths({ months = {}, year }) {
                                 },
                                 font: {
                                     family: 'Itim',
-                                    size: 11,
+                                    size: 10,
                                     weight: 'bold'
                                 }
                             }
@@ -99,23 +99,29 @@ export default function ExpenseByMonths({ months = {}, year }) {
                             x: {
                                 display: true,
                                 ticks: {
-                                    color: '#1e4985',
+                                    color: '#FFF8E7',
                                     font: {
                                         family: 'Itim',
                                         size: 14,
                                         weight: 'bold'
                                     }
+                                },
+                                grid: {
+                                    color: '#bdc3c7'
                                 }
                             },
                             y: {
                                 display: true,
                                 ticks: {
-                                    color: '#1e4985',
+                                    color: '#FFF8E7',
                                     font: {
                                         family: 'Itim',
                                         size: 14,
                                         weight: 'bold'
                                     }
+                                },
+                                grid: {
+                                    color: '#bdc3c7'
                                 }
                             }
                         }

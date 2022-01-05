@@ -4,11 +4,12 @@ import React, { useState } from 'react';
 // Importing 3rd party components
 import axios from 'axios';
 
-export default function AddCategory() {
-    const authkey = 'cf97004e5a637518296a3c898b2a22f2a538cfa8'
-    const user = 1
+export default function AddCategory({ token = {} }) {
+    const { key, user } = token
+
     const [ispending, setIsPending] = useState(false)
     const [successForm, setSuccessForm] = useState(false)
+    const [errorForm, setErrorForm] = useState(false)
     const [newCategoryName, setNewCategoryName] = useState()
 
     function handleSubmit(e) {
@@ -21,7 +22,7 @@ export default function AddCategory() {
         axios.post('https://www.csabakeller.com/api/mybudget/categories', newCategory, {
             headers: {
                 "Content-type": "application/json",
-                "Authorization": "Token " + authkey
+                "Authorization": "Token " + key
             }
         })
             .then(result => {
@@ -33,6 +34,7 @@ export default function AddCategory() {
             })
             .catch((error) => {
                 console.log(error.response.data)
+                setErrorForm(true)
             })
     }
 
@@ -62,8 +64,9 @@ export default function AddCategory() {
                                         {ispending && <button className=' mt-4 mb-3 disabled' type="submit">Adding category...</button>}
                                     </div>
                                     <button type="button" id='modal-cancel-btn' data-bs-dismiss="modal">Cancel</button>
-                                    <div className='success mt-4 text-center'>
-                                        {successForm && <p className='lead'>Successfully added to database.</p>}
+                                    <div className='mt-4 text-center'>
+                                        {successForm && <p className='success lead'>Successfully added to database.</p>}
+                                        {errorForm && <p className='lead'>Successfully added to database.</p>}
                                     </div>
                                 </div>
                             </form>

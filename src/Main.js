@@ -217,6 +217,7 @@ export default function Main() {
                     <Routes>
                         <Route path='/modeller' element={<Modeller />} />
                         <Route path='/' element={<Dashboard
+                            token={token}
                             dashboardData={dashboardData}
                             monthlyData={monthlyData}
                             filteredPayments={filteredPayments}

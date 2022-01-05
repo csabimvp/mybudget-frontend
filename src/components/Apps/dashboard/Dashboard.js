@@ -8,7 +8,7 @@ import AddPayment from "../../Forms/AddPayment";
 import AddCategory from "../../Forms/AddCategory";
 import ExpenseTable from "../../Layout/ExpenseTable"
 
-export default function Dashboard({ dashboardData = {}, monthlyData = [], filteredPayments = [], filteredExpenses = [] }) {
+export default function Dashboard({ token = {}, dashboardData = {}, monthlyData = [], filteredPayments = [], filteredExpenses = [] }) {
     function handleSumValues(items = {}) {
         //const sum_total = items.reduce((total, obj) => total = parseInt(obj.value, 10) + total, 0)
         const sum_total = items.reduce((total, obj) => total = parseFloat(obj.value) + total, 0)
@@ -20,10 +20,10 @@ export default function Dashboard({ dashboardData = {}, monthlyData = [], filter
         <>
             <div className="add-payment-wrapper row">
                 <div className="col-6">
-                    <AddPayment />
+                    <AddPayment token={token} />
                 </div>
                 <div className="col-6">
-                    <AddCategory />
+                    <AddCategory token={token} />
                 </div>
             </div>
             <hr className="mt-2" />

@@ -77,6 +77,9 @@ export default function ExpenseByCategories({ data = {}, year, month }) {
                                         size: 10,
                                         weight: 'bold'
                                     }
+                                },
+                                grid: {
+                                    color: '#bdc3c7'
                                 }
                             },
                             y: {
@@ -88,6 +91,9 @@ export default function ExpenseByCategories({ data = {}, year, month }) {
                                         size: 10,
                                         weight: 'bold'
                                     }
+                                },
+                                grid: {
+                                    color: '#bdc3c7'
                                 }
                             }
                         }
