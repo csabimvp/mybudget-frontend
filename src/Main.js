@@ -39,7 +39,8 @@ export default function Main() {
         { id: 2019, name: "2019", active: false },
         { id: 2020, name: "2020", active: false },
         { id: 2021, name: "2021", active: false },
-        { id: 2022, name: "2022", active: true },
+        { id: 2022, name: "2022", active: false },
+        { id: 2022, name: "2023", active: true },
     ]
     const months = [
         { id: 0, name: 'All months', active: false },
